@@ -56,6 +56,7 @@ describe('calculator', function () {
 // calculator.clearClick() - clear the running total without affecting the calculation
   it('can clear calculator', function(){
     calculator.previousTotal = 5
+    calculator.numberClick(1)
     calculator.clearClick()
     assert.strictEqual(0, calculator.runningTotal);
   })
