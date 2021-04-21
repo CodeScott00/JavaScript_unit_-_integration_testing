@@ -60,8 +60,38 @@ it("should update display with operation result", function(){
     element(by.css('#number1')).click();
     element(by.css('#number2')).click();
     element(by.css('#operator_equals')).click();
-    expect(running_total.getAttribute('value')).to.eventually.equal('-1')
+    expect(running_total.getAttribute('value')).to.eventually.equal('-1') //neg
   })
+
+  it('expected outcome for negative number', function(){
+    element(by.css('#number2')).click();
+    element(by.css('#operator_subtract')).click();
+    element(by.css('#number1')).click();
+    element(by.css('#operator_equals')).click();
+    expect(running_total.getAttribute('value')).to.eventually.equal('1')  //positive
+  })
+
+  it('expected outcome decimal number', function(){
+    element(by.css('#number6')).click();
+    element(by.css('#operator_divide')).click();
+    element(by.css('#number4')).click();
+    element(by.css('#operator_equals')).click();
+    expect(running_total.getAttribute('value')).to.eventually.equal('1.5')
+  })
+
+  it('expected outcome large number',function(){
+    element(by.css('#number2')).click();
+    element(by.css('#number2')).click();
+    element(by.css('#number2')).click();
+    element(by.css('#number2')).click();
+    element(by.css('#number2')).click();
+    element(by.css('#operator_multiply')).click();
+    element(by.css('#number5')).click();
+    element(by.css('#operator_equals')).click();
+    expect(running_total.getAttribute('value')).to.eventually.equal('111110')
+  })
+
+
 // What does the code do in exceptional circumstances? Specifically, if you divide by zero, what is the effect? Write a test to describe what you'd prefer to happen, and then correct the code to make that test pass (you will need to modify the Calculator model to meet this requirement).
   it('divide by zero, expected to equal 0', function(){
     element(by.css('#number1')).click();
